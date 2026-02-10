@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+     {% block content %}
+
+    <div class="container">
+       <form method="get"  class="row mt-5 mb-5">
+         <div class="col">
+            <input type="text" name="search" class="form-control">
+         </div>
+         <div class="col">
+            <button type="submit" class="btn btn-success">بحث</button>
+         </div>
+         <div class="col text-start">
+            <a href="{% url 'depts' %}" class="btn btn-primary">ازالة التصفية</a>
+         </div>
+       </form>
+
+        <div class="row mt-3">
+            {% for d in depts %}
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                    <h3> {{d}}  </h3>
+                </div>
+              </div>
+            </div>
+           {% endfor %}
+        </div>
+    </div>
+
+    {% endblock %}
+Footer

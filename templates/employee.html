@@ -1,0 +1,90 @@
+{% extends 'base.html' %} 
+
+
+ {% block content %}
+
+    <div class="container">
+      
+
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-inline">
+                          <li class="list-inline-item">
+                                <a href="?action=max" class="btn btn-success">اعلى راتب 
+                                <i class="bi bi-arrow-up"></i>
+                                </a>
+                          </li>
+
+                            <li class="list-inline-item">
+                                <a href="?action=min" class="btn btn-info">اقل راتب 
+                                 <i class="bi bi-arrow-down"></i>
+                                </a>
+                          </li>
+
+                            <li class="list-inline-item">
+                                <a href="{% url 'emp' %}" class="btn btn-primary">  
+                                <i class="bi bi-arrow-clockwise">إزالة التصفية</i>
+                                </a>
+                          </li>
+
+
+                           
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card p-3">
+                <div class="card-body">
+                    <form method="get" class="row ">
+                <div class="row">
+                    <div class="col">
+                        <input  type="text" name="search" class="form-control">
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-success">بحث  <i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <div class="row mt-5">
+        <div class="col">
+               <div class="card border-0 shadow-sm rounded-4 ">
+                <table class="table table-responsive">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">#</th>
+                            <th class="ps-4">اسم الموظف</th>
+                            <th class="ps-4">الراتب</th>
+                            <th class="ps-4">رقم الهاتف</th>
+                            <th class="ps-4">البريد الاليكتروني</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for em in emp %}
+
+                        <tr>
+                            <td class="ps-4 text-muted small">{{em.id}}</td>
+                            <td class="ps-4 text-muted small"> {{em.name}}</td>
+                            <td class="ps-4 text-muted small">{{em.sal}}</td>
+                            <td class="ps-4 text-muted small">{{em.phone}}</td>
+                            <td class="ps-4 text-muted small">{{em.email}}</td>
+                        </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+         </div>
+        </div>
+     </div>
+   </div>
+ {% endblock %}
